@@ -50,6 +50,7 @@
 //自定义layer-三角形
 - (void)customLayer{
     /**
+     * 参考：https://blog.csdn.net/codingmaniac/article/details/41779709 文章不错
      * 在前面几讲中已经提到，每一个UIView内部都默认关联着一个CALayer，我们可用称这个Layer为Root Layer（根层）。所有的非Root Layer，也就是手动创建的CALayer对象，都存在着隐式动画。
      
      * 当对非Root Layer的部分属性进行相应的修改时，默认会自动产生一些动画效果，这些属性称为Animatable Properties(可动画属性)。
