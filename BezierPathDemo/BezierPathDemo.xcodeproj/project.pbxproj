@@ -13,6 +13,7 @@
 		1CC682772191A0F7009C4179 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CC682762191A0F7009C4179 /* Assets.xcassets */; };
 		1CC6827A2191A0F7009C4179 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC682782191A0F7009C4179 /* LaunchScreen.storyboard */; };
 		1CC6827D2191A0F7009C4179 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC6827C2191A0F7009C4179 /* main.m */; };
+		1CC682852191B9F7009C4179 /* CustomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC682842191B9F7009C4179 /* CustomLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		1CC682792191A0F7009C4179 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CC6827B2191A0F7009C4179 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CC6827C2191A0F7009C4179 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1CC682832191B9F7009C4179 /* CustomLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomLayer.h; sourceTree = "<group>"; };
+		1CC682842191B9F7009C4179 /* CustomLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,8 @@
 				1CC6826E2191A0F5009C4179 /* AppDelegate.m */,
 				1CC682702191A0F5009C4179 /* ViewController.h */,
 				1CC682712191A0F5009C4179 /* ViewController.m */,
+				1CC682832191B9F7009C4179 /* CustomLayer.h */,
+				1CC682842191B9F7009C4179 /* CustomLayer.m */,
 				1CC682732191A0F5009C4179 /* Main.storyboard */,
 				1CC682762191A0F7009C4179 /* Assets.xcassets */,
 				1CC682782191A0F7009C4179 /* LaunchScreen.storyboard */,
@@ -141,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CC682852191B9F7009C4179 /* CustomLayer.m in Sources */,
 				1CC682722191A0F5009C4179 /* ViewController.m in Sources */,
 				1CC6827D2191A0F7009C4179 /* main.m in Sources */,
 				1CC6826F2191A0F5009C4179 /* AppDelegate.m in Sources */,
