@@ -20,6 +20,7 @@
     [self bezierPathMask];
     
     [self customLayer];
+    [self layerImage];
 }
 
 //镂空效果
@@ -75,6 +76,15 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         layer.position = CGPointMake(300, 400);
     });
+}
+
+- (void)layerImage{
+    //layer 可以直接绘制图片
+    CALayer * layer = [CALayer new];
+    layer.bounds = CGRectMake(0, 0, 100, 100);
+    layer.position = CGPointMake(300, 500);
+    layer.contents = (id)[UIImage imageNamed:@"testImage"].CGImage;
+    [self.view.layer addSublayer:layer];
 }
 
 @end
