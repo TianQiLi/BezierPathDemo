@@ -19,7 +19,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     [self bezierPathMask];
     
-    [self customLayer];
+    [self customLayerTrangle];
     [self layerImage];
 }
 
@@ -48,7 +48,7 @@
 }
 
 //自定义layer-三角形
-- (void)customLayer{
+- (void)customLayerTrangle{
     /**
      * 参考：https://blog.csdn.net/codingmaniac/article/details/41779709 文章不错
      * 在前面几讲中已经提到，每一个UIView内部都默认关联着一个CALayer，我们可用称这个Layer为Root Layer（根层）。所有的非Root Layer，也就是手动创建的CALayer对象，都存在着隐式动画。
@@ -67,11 +67,13 @@
     
     
     CustomLayer * layer = [CustomLayer new];
+ 
     layer.bounds = CGRectMake(0, 0, 400, 400);
     layer.position = CGPointMake(300, 300);
     //必须调用，否则drawInContext不执行;
     //需要调用setNeedsDisplay这个方法，才会通知delegate进行绘图
     [layer setNeedsDisplay];
+   
     [self.view.layer addSublayer:layer];
     //Animatable 可动画属性：自带隐式动画
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -81,10 +83,11 @@
 
 - (void)layerImage{
     //layer 可以直接绘制图片
-    CALayer * layer = [CALayer new];
-    layer.bounds = CGRectMake(0, 0, 100, 100);
-    layer.position = CGPointMake(300, 500);
+    CustomLayer * layer = [CustomLayer new];
+    layer.bounds = CGRectMake(0, 0, 200, 200);
+    layer.position = CGPointMake(350, 500);
     layer.contents = (id)[UIImage imageNamed:@"testImage"].CGImage;
+//    [layer setNeedsDisplay];
     [self.view.layer addSublayer:layer];
 }
 

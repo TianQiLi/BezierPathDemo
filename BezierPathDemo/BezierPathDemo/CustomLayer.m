@@ -9,6 +9,15 @@
 #import "CustomLayer.h"
 
 @implementation CustomLayer
+
+- (instancetype)init{
+    if (self = [super init]) {
+        //如果这里加了这个代码，那么外面就不需要手动的调用了，意味着，只要创建对象，那么下次屏幕刷新的时候就会通知delegate 调用刷新方法
+//        [self setNeedsDisplay];
+    }
+    return self;
+}
+
 - (void)drawInContext:(CGContextRef)ctx{
     // 设置为蓝色
     CGContextSetRGBFillColor(ctx, 0, 0, 1, 1);
