@@ -9,6 +9,9 @@
 #import "ViewController.h"
 #import "CustomLayer.h"
 @interface ViewController ()
+/** <#name#> */
+@property (nonatomic, strong) UIView * maskView;
+@property (nonatomic, strong) UIButton * btn;
 
 @end
 
@@ -21,27 +24,70 @@
     
     [self customLayerTrangle];
     [self layerImage];
+    [self testForAnimationProperty];
+    
+    [self testForBoundAndFrame];
+    
+}
+
+- (void)testForBoundAndFrame{
+    
+    UIView * view = [[UIView alloc] initWithFrame: CGRectMake(50, 50, 100, 100)];
+    [view setBackgroundColor:[UIColor redColor]];
+    /** 表示左上角的坐标(50，50),那么意味着view 的内部坐标系的坐标原点向左上角发生了移动 */
+    view.bounds = CGRectMake(50, 50, 100, 100);
+    [self.view addSubview:view];
+    
+    UIView * subView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, 30, 30)];
+    [subView setBackgroundColor:[UIColor yellowColor]];
+    [view addSubview:subView];
+    
+    
+    
+    
+}
+
+
+- (void)testForAnimationProperty{
+    _btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_btn setFrame:CGRectMake(100, 100, 30, 30)];
+    [_btn setBackgroundColor:[UIColor redColor]];
+    [_btn addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_btn];
+    
+}
+
+- (void)clickEvent:(id)sender{
+//    _maskView.layer.position = CGPointMake(_maskView.center.x+ 30, _maskView.center.y+ 30);
+//    return;
+    [UIView animateWithDuration:1 animations:^{
+        self.maskView.bounds = CGRectMake(0,0,self.maskView.bounds.size.width + 30,self.maskView.bounds.size.height + 30);
+//     _maskView.layer.position = CGPointMake(_maskView.center.x+ 30, _maskView.center.y+ 30);
+//        _maskView.center = CGPointMake(_maskView.center.x+ 30, _maskView.center.y+ 30);
+    }];
+    
+    
 }
 
 //镂空效果
 - (void)bezierPathMask{
-    UIView * maskView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, self.view.bounds.size.width-20, self.view.bounds.size.height-20)];
-    maskView.backgroundColor = [UIColor redColor];
-    maskView.alpha = 0.5;
-    [self.view addSubview:maskView];
+    _maskView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, self.view.bounds.size.width-20, self.view.bounds.size.height-20)];
+    _maskView.backgroundColor = [UIColor redColor];
+    _maskView.alpha = 0.5;
+    [self.view addSubview:_maskView];
     
     //maskView的圆角矩形路径
-    UIBezierPath * path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(10, 10, maskView.bounds.size.width-20, maskView.bounds.size.height-20) cornerRadius:15];
+    UIBezierPath * path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(10, 10, _maskView.bounds.size.width-20, _maskView.bounds.size.height-20) cornerRadius:15];
     
     //path 的去除的原型路径
-    UIBezierPath * pathMask = [UIBezierPath bezierPathWithArcCenter:maskView.center radius:100 startAngle:0 endAngle:2*M_PI clockwise:NO];
+    UIBezierPath * pathMask = [UIBezierPath bezierPathWithArcCenter:_maskView.center radius:100 startAngle:0 endAngle:2*M_PI clockwise:NO];
     [path appendPath:pathMask];
     
     CAShapeLayer * shapeLayer = [CAShapeLayer new];
     shapeLayer.path = path.CGPath;
     shapeLayer.fillColor = [UIColor greenColor].CGColor;//无用
     //mask表示蒙版
-    maskView.layer.mask = shapeLayer;
+    _maskView.layer.mask = shapeLayer;
     //可以看看下面代码的效果
 //    [maskView.layer addSublayer:shapeLayer];
     
